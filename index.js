@@ -12,6 +12,7 @@ for (let i = 0; i < document.querySelectorAll(".drum").length; i++) {
 
     let htmlButtonInnerText = this.innerHTML;
     playSound(htmlButtonInnerText)
+    addButtonAnimation(htmlButtonInnerText)
 
 
     //enhanced this part of the code with a fucntion
@@ -91,4 +92,13 @@ function playSound(key){
 //code for the keypress event and making sound for the coresponding button
 document.addEventListener("keypress",function(e){
     playSound(e.key)
+    addButtonAnimation(e.key)
 })
+
+function addButtonAnimation(key) {
+  let keyPressed = document.querySelector("."+key)
+  keyPressed.classList.add("pressed")
+  setTimeout(() => {
+    keyPressed.classList.remove("pressed")
+  }, 100);
+}
